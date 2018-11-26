@@ -1,17 +1,21 @@
 package com.womenproiot.www.link;
 
 import android.content.Intent;
-import android.graphics.Color;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toolbar;
 
-public class MainActivity extends AppCompatActivity {
+import com.naver.maps.map.MapFragment;
+import com.naver.maps.map.NaverMap;
+import com.naver.maps.map.OnMapReadyCallback;
+import com.naver.maps.map.overlay.LocationOverlay;
+
+public class MainActivity extends AppCompatActivity implements OnMapReadyCallback {
     //상수정의
     static final int REQUEST_CODE = 2000;
 
@@ -20,6 +24,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //로딩화면 실행
+        Intent intent = new Intent(this, LoadingActivity.class);
+        startActivity(intent);
+
+        //플로딩 추가버튼
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -28,7 +37,16 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+
+        MapFragment mapFragment = (MapFragment)getSupportFragmentManager().findFragmentById(R.id.map_fragment);
+        if (mapFragment == null) {
+            mapFragment = MapFragment.newInstance();
+            getSupportFragmentManager().beginTransaction().add(R.id.map_fragment, mapFragment).commit();
+        }
+        mapFragment.getMapAsync(this);
     }
+
 
 
     @Override
@@ -69,4 +87,13 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    @Override
+    public void onMapReady(@NonNull NaverMap naverMap) {
+
+        LocationOverlay locationOverlay = naverMap.getLocationOverlay();
+        locationOverlay.setSubIcon(LocationOverlay.DEFAULT_SUB_ICON_ARROW);
+        locationOverlay.setCircleOutlineWidth(0);
+        locationOverlay.setVisible(true);
+
+    }
 }

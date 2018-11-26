@@ -13,6 +13,11 @@
     <!-- WIFI 상태활용시 추가 -->
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
 
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -36,6 +41,7 @@
         <activity android:name=".AttendeesActivity" />
         <activity android:name=".SearchPlacesActivity" />
         <activity android:name=".ResultPlacesActivity" />
+        <activity android:name=".LoadingActivity"/>
     </application>
 
 </manifest>
