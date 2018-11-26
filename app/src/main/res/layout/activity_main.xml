@@ -11,12 +11,29 @@
         android:id="@+id/map_fragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintBottom_toTopOf="@+id/btnSearchCenterPoint"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
     </FrameLayout>
+
+    <EditText
+        android:id="@+id/editTextDepaturePlace"
+        android:layout_width="0dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="100dp"
+        android:background="@color/common_google_signin_btn_text_dark_default"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="잠실역"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/map_fragment" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
@@ -31,7 +48,7 @@
         app:srcCompat="@android:drawable/ic_dialog_email" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnSearchCenterPoint"
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:background="@drawable/button_simple_blue"
@@ -42,5 +59,18 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnDepatureSearch"
+        android:layout_width="65dp"
+        android:layout_height="31dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/button_simple_blue"
+        android:text="검색"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/editTextDepaturePlace"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

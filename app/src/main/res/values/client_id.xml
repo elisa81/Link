@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="naver_map_sdk_client_id">hzltr7zh5e</string>
+    <string name="naver_map_sdk_secret_id">sE5yynPMqq26Vak5BRntJcX8Z7FP3xy16qzV0qUl</string>
+    <string name="naver_api_client_id">I1AxyKglqcDOJvvLM1Ia</string>
+    <string name="naver_api_secret_id">4WyEffBAMR</string>
+
 </resources>
