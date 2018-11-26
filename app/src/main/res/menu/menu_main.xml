@@ -1,0 +1,30 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.womenproiot.www.tingmap1124.MainActivity">
+    <item
+        android:id="@+id/meetup_reg"
+        android:orderInCategory="100"
+        android:title="@string/meetup_reg"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/location_reg"
+        android:orderInCategory="100"
+        android:title="@string/location_reg"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/attendees"
+        android:orderInCategory="100"
+        android:title="@string/attendees"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/search_places"
+        android:orderInCategory="100"
+        android:title="@string/search_places"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/result_places"
+        android:orderInCategory="100"
+        android:title="@string/result_places"
+        app:showAsAction="never" />
+</menu>

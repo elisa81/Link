@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Link</string>
+    <string name="meetup_reg">모임등록</string>
+    <string name="location_reg">구성원 출발지점 등록</string>
+    <string name="attendees">구성원보기</string>
+    <string name="search_places">중간지점 찾기</string>
+    <string name="result_places">장소추천</string>
+</resources>
