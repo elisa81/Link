@@ -21,7 +21,7 @@ public class LoadingActivity extends AppCompatActivity {
             public void run() {
                 finish();
             }
-        }, 2000);
+        }, 1000);
     }
 
     @Override

@@ -18,16 +18,16 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 
-public class JSONHelpeAsyncTask extends AsyncTask<String, Void, ArrayList<JSONHelpeAsyncTask.PlaceDTO>> {
+public class JSONHelpeAsyncTask extends AsyncTask<String, Void, ArrayList<LinkDTO.Place>> {
 
     final static String NAVER_MAP_SEARCH_URL = "https://naveropenapi.apigw.ntruss.com/map-place/v1/search?query=";
 
     /*
      *장소 검색 API는 어떤 시설이나 지리적 위치의 장소 명칭을 질의어로 입력받아 최대 5개 장소의 장소 정보를 검색합니다.
      * */
-    private ArrayList<JSONHelpeAsyncTask.PlaceDTO> getLocation(String query) {
+    private ArrayList<LinkDTO.Place> getLocation(String query) {
 
-        ArrayList<JSONHelpeAsyncTask.PlaceDTO> resultList=new ArrayList<>();
+        ArrayList<LinkDTO.Place> resultList=new ArrayList<>();
         HttpURLConnection conn=null;
         InputStream in=null;
 
@@ -65,24 +65,24 @@ public class JSONHelpeAsyncTask extends AsyncTask<String, Void, ArrayList<JSONHe
         return resultList;
     }
 
-    private ArrayList<JSONHelpeAsyncTask.PlaceDTO> parseJson(InputStream in) {
-        ArrayList<JSONHelpeAsyncTask.PlaceDTO> result = new ArrayList<>();
+    private ArrayList<LinkDTO.Place> parseJson(InputStream in) {
+        ArrayList<LinkDTO.Place> result = new ArrayList<>();
         try {
             JSONObject json = new JSONObject(getStringFromInputStream(in));
             JSONArray placeArray = json.getJSONArray("places");
             String name,rAddr,jAddr,phone,id;
-            long lat,lon, dist;
+            double lat,lon, dist;
             for (int i=0 ; i<placeArray.length() ; i++) {
                 name = placeArray.getJSONObject(i).getString("name");
                 rAddr = placeArray.getJSONObject(i).getString("road_address");
                 jAddr = placeArray.getJSONObject(i).getString("jibun_address");
                 phone = placeArray.getJSONObject(i).getString("phone_number");
-                lat = placeArray.getJSONObject(i).getLong("x");
-                lon = placeArray.getJSONObject(i).getLong("y");
-                dist = placeArray.getJSONObject(i).getLong("distance");
+                lon = placeArray.getJSONObject(i).getDouble("x");
+                lat = placeArray.getJSONObject(i).getDouble("y");
+                dist = placeArray.getJSONObject(i).getDouble("distance");
                 id = placeArray.getJSONObject(i).getString("sessionId");
 
-                result.add(new PlaceDTO(name,rAddr,jAddr,phone,lat,lon,dist,id));
+                result.add(new LinkDTO().new Place(name,rAddr,jAddr,phone,lat,lon,dist,id));
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -115,33 +115,8 @@ public class JSONHelpeAsyncTask extends AsyncTask<String, Void, ArrayList<JSONHe
 
 
     @Override
-    protected ArrayList<PlaceDTO> doInBackground(String... strings) {
-        ArrayList<JSONHelpeAsyncTask.PlaceDTO> result = getLocation(strings[0]);
+    protected ArrayList<LinkDTO.Place> doInBackground(String... strings) {
+        ArrayList<LinkDTO.Place> result = getLocation(strings[0]);
         return result;
-    }
-
-
-
-    public class PlaceDTO{
-        public String name;
-        public String roadAddress;
-        public String jibunAddress;
-        public String phoneNumber;
-        public long latitude;
-        public long longitude;
-        public long distance;
-        public String sessionId;
-
-        public PlaceDTO(String name, String roadAddress, String jibunAddress, String phoneNumber,
-                        long latitude, long longitude, long distance, String sessionId) {
-            this.name = name;
-            this.roadAddress = roadAddress;
-            this.jibunAddress = jibunAddress;
-            this.phoneNumber = phoneNumber;
-            this.latitude = latitude;
-            this.longitude = longitude;
-            this.distance = distance;
-            this.sessionId = sessionId;
-        }
     }
 }
