@@ -10,9 +10,10 @@
     <FrameLayout
         android:id="@+id/map_fragment"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnSearchCenterPoint"
+        android:layout_height="769dp"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -21,56 +22,55 @@
     <EditText
         android:id="@+id/editTextDepaturePlace"
         android:layout_width="0dp"
-        android:layout_height="37dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="100dp"
+        android:layout_height="49dp"
+
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="14dp"
         android:background="@color/common_google_signin_btn_text_dark_default"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="광화문역"
         android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintEnd_toStartOf="@+id/btnDepatureSearch"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/map_fragment" />
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="50dp"
-        app:backgroundTint="@color/design_default_color_primary"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+        app:layout_constraintTop_toTopOf="@+id/btnDepatureSearch" />
 
     <Button
         android:id="@+id/btnSearchCenterPoint"
         android:layout_width="0dp"
-        android:layout_height="40dp"
+        android:layout_height="54dp"
         android:background="@drawable/button_simple_blue"
         android:text="@string/searchCenter"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
         android:textSize="18sp"
         android:textStyle="bold"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btnDepatureSearch"
-        android:layout_width="65dp"
-        android:layout_height="31dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="18dp"
-        android:layout_marginEnd="24dp"
+        android:layout_width="86dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="16dp"
         android:background="@drawable/button_simple_blue"
         android:text="검색"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/editTextDepaturePlace"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ListView
+        android:id="@+id/result_list"
+        android:layout_width="337dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="294dp"
+        android:visibility="gone"
+        android:background="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/btnSearchCenterPoint"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnDepatureSearch" />
 
 </android.support.constraint.ConstraintLayout>
